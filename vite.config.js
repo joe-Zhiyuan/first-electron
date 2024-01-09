@@ -29,3 +29,5 @@ export default defineConfig({
       // }
   }
 })
+
+// 先启动vue 再启动electron-electron

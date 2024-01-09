@@ -44,3 +44,20 @@ app.on('window-all-closed', function () {
 })
 // 在这个文件中，你可以包含应用程序剩余的所有部分的代码，
 // 也可以拆分成几个文件，然后用 require 导入。
+
+
+// 前端（vue，electron）怎么获取电脑的唯一码?
+// 可以获取硬盘和cpu序列号来作为唯一id
+const os = require('os');
+const { execSync } = require('child_process');
+
+// 获取硬盘序列号
+const disks = os.platform() === 'win32' ? execSync('wmic diskdrive get serialnumber').toString().split('\n').slice(1,-1) : [];
+const diskSerials = disks.map(serial => serial.trim());
+
+// 获取CPU序列号
+const cpu = os.platform() === 'win32' ? execSync('wmic cpu get processorid').toString().split('\n').slice(1,-1) : [];
+const cpuSerial = cpu[0].trim();
+
+console.log('硬盘序列号：', diskSerials);
+console.log('CPU序列号：', cpuSerial);
