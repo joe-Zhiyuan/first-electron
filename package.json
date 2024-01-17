@@ -8,8 +8,22 @@
     "build": "vite build",
     "preview": "vite preview",
     "electron": "wait-on tcp:3000 && electron .",
+    "postinstall": "node node_modules/electron/install.js",
     "electron:serve": "concurrently -k \"npm run dev\" \"npm run electron\""
   },
+  "config": {
+    "electron": {
+      "mirror": "https://registry.npmmirror.com/-/binary/electron/"
+    }
+  },
+  "repository": "https://github.com/electron/electron-quick-start",
+  "keywords": [
+    "Electron",
+    "quick",
+    "start",
+    "tutorial",
+    "demo"
+  ],
   "dependencies": {
     "electron": "^25.2.0",
     "vue": "^3.2.47"
